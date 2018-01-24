@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="display">
+    <h1>Login</h1>
+  </div>
+  <form (submit)="onSubmit()" #form="ngForm">
+    <label for="name">Name</label>
+    <input type="text" name="name" required minlength="3" [(ngModel)]="user.name" #name="ngModel" class="form-control">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)">Required</div><br>
+    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Login</button>
+  </form>
+</div>
