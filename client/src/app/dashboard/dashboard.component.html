@@ -3,4 +3,19 @@
   <div class="jumbotron">
     <h1 *ngIf="user != 'undefined'" id="welcome">Hello, {{ user }} </h1>
   </div>
+  <a [routerLink]="['/newquestion']">Add a new question!</a><br><br>
+  <div class="">
+    <table class="table table-bordered table-striped table-hover">
+      <tr>
+        <th>Question</th>
+        <th>Answers</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let q of questions">
+      <td>{{ q.content }}</td>
+      <td>{{ q.answersCount }}</td>
+      <td><a [routerLink]="['/question', q._id]">Show</a> | <a [routerLink]="['/answer', q._id]">Answer</a></td>
+    </tr>
+    </table>
+  </div>
 </div>

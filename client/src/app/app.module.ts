@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './data.service';
+import { QuestionComponent } from './question/question.component';
+import { AnswerComponent } from './answer/answer.component';
+import { NewquestionComponent } from './newquestion/newquestion.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    QuestionComponent,
+    AnswerComponent,
+    NewquestionComponent
   ],
   imports: [
     BrowserModule,

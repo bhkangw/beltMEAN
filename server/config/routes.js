@@ -1,19 +1,34 @@
-var user = require("../controllers/QuoteController.js");
+var Question = require("../controllers/QuestionController.js");
 var path = require("path");
 
 module.exports = function (app) {
 	app.post("/login", function (req, res) {
 		console.log("in backend routes")
-		user.login(req, res);
+		Question.login(req, res);
 	});
 
 	app.get("/sess", function (req, res) {
 		console.log("in backend routes: checking session")
-		user.checkSess(req, res);
+		Question.checkSess(req, res);
 	});
 
 	app.get("/logout", function (req, res) {
-		user.logout(req, res);
+		Question.logout(req, res);
+	});
+
+	app.post("/addQuestion", function (req, res) {
+		console.log("in backend routes: adding question")
+		Question.addQuestion(req, res);
+	});
+
+	app.get("/showAll", function (req, res) {
+		Question.showAll(req, res);
+	});
+
+	app.get("/question/:id", function (req, res) {
+		console.log("in backend routes: getting ONE question")
+		console.log(req.params.id)
+		Question.getOne(req, res);
 	});
 
 	app.get("*", function (req, res) {

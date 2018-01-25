@@ -1,0 +1,15 @@
+<div class="container">
+  <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/dashboard']">Home</a>
+  <div class="jumbotron">
+    <h2>Question Name here!!</h2>
+  </div>
+  <form (submit)="addAnswer()" #form="ngForm">
+    <label for="content">Answer</label>
+    <input type="text" name="content" required minlength="10" [(ngModel)]="answer.content" #content="ngModel" class="form-control">
+    <div *ngIf="content.invalid && (content.dirty || content.touched)">Minimum length is 5!</div>
+    <label for="description">Supporting details for your answer (optional)</label>
+    <input type="text" name="description" [(ngModel)]="answer.description" #description="ngModel" class="form-control">
+    <br>
+    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Add Answer</button>
+  </form>
+</div>
