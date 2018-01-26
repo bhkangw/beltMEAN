@@ -10,15 +10,21 @@ import { Question } from "../question" // class
 })
 export class QuestionComponent implements OnInit {
   user: string;
-  question;
   questionId;
+  question;
+  questions: Array<object> = [];
 
   constructor(private _dataService: DataService, private _route: ActivatedRoute, private _router: Router) {
     this._dataService.oneQuestionObserver.subscribe(question => {
       this.question = question;
     })
+
+    this._dataService.questionObserver.subscribe((questions) => {
+      this.questions = questions;
+    })
+    
     this._route.paramMap.subscribe(params => {
-      this._dataService.getOneQuestion(params.get('id'));
+      // this._dataService.getOneQuestion(params.get('id'));
     })
 
     this.questionId = _route.snapshot.params['id']
@@ -56,5 +62,6 @@ export class QuestionComponent implements OnInit {
   // }
     this.checkSess()
     this.getOneQuestion()
+    this._dataService.showAll()
   }
 }

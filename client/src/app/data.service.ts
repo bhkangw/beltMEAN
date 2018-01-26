@@ -10,6 +10,9 @@ export class DataService {
   questions: Array<object> = [];
   questionObserver = new BehaviorSubject(this.questions)
 
+  answers: Array<object> = [];
+  answerObserver = new BehaviorSubject(this.answers)
+
   oneQuestion = {};
   oneQuestionObserver = new BehaviorSubject(this.oneQuestion);
 
@@ -60,8 +63,14 @@ export class DataService {
       })
   }
 
-  addAnswer(answer, cb){
-
+  addAnswer(answer, cb) {
+    this._http.post("/addAnswer", answer).subscribe(res => {
+      this.answers = res.json();
+      this.questionObserver.next(this.answers);
+      console.log("answer", answer)
+      console.log("answerssssss!!!!", this.answers)
+      this._router.navigate(['dashboard']);
+    })
   }
 
 }

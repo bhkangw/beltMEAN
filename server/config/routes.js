@@ -21,6 +21,11 @@ module.exports = function (app) {
 		Question.addQuestion(req, res);
 	});
 
+	app.post("/addAnswer", function (req, res) {
+		console.log("in backend routes: adding answer")
+		Question.addAnswer(req, res);
+	});
+
 	app.get("/showAll", function (req, res) {
 		Question.showAll(req, res);
 	});
@@ -34,4 +39,5 @@ module.exports = function (app) {
 	app.get("*", function (req, res) {
 		res.sendFile(path.resolve("./client/dist/index.html"));
 	});
+
 }

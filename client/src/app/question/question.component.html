@@ -1,7 +1,28 @@
 <div class="container">
   <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/answer']">Answer the question</a>
   <div class="jumbotron">
-    <h1>{{question.content}} </h1>
-    <h3>description</h3>
+    <div *ngFor="let q of questions">
+      <div *ngIf="q._id === questionId">
+        <h1>{{q.content}} </h1>
+        <h3>Description: {{q.description}}</h3>
+        <div *ngFor="let a of q.answers">
+          <p>{{ a.name }}</p>
+          <p>{{ a.content }}</p>
+          <p>{{ a.description }}</p>
+          <p>{{ a.likes }}</p>
+          <a href="">Like</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Answers:</h1>
+  </div>
+  <div *ngFor="let a of question.answers">
+    <p>{{ a.name }}</p>
+          <p>{{ a.content }}</p>
+          <p>{{ a.description }}</p>
+          <p>{{ a.likes }}</p>
+    <a href="">Like</a>
   </div>
 </div>

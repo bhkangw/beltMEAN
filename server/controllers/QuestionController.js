@@ -32,6 +32,16 @@ module.exports = {
 		})
 	},
 
+	addAnswer: function (req, res) {
+		console.log("name!!", req.body.name)
+		Answer.create({ name: req.body.name, content: req.body.content, description: req.body.description, question: req.body.questionId, likes: 0 }, function (err, answer) {
+			console.log("Created ANSwer!!!!!!")
+			Answer.find({}).sort("-likes").exec(function (err, answers) {
+				return res.json(answers);
+			})
+		})
+	},
+
 	showAll: function (req, res) {
 		Question.find({}).sort("-createdAt").exec(function (err, questions) {
 			return res.json(questions);

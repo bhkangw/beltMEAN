@@ -12,10 +12,10 @@
         <th>Action</th>
       </tr>
       <tr *ngFor="let q of questions">
-      <td>{{ q.content }}</td>
-      <td>{{ q.answersCount }}</td>
-      <td><a [routerLink]="['/question', q._id]">Show</a> | <a [routerLink]="['/answer', q._id]">Answer</a></td>
-    </tr>
+        <td>{{ q.content }}</td>
+        <td>{{ count }}</td>
+        <td><a [routerLink]="['/question', q._id]">Show</a> | <a [routerLink]="['/answer', q._id]">Answer</a></td>
+      </tr>
     </table>
   </div>
 </div>
