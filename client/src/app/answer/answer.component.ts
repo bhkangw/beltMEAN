@@ -37,8 +37,10 @@ export class AnswerComponent implements OnInit {
     })
   }
 
-  addAnswer(quote) {
+  addAnswer(id) {
+    console.log("dsadsdsad!!!!!",id)
     this.answer.name = this.user;
+    this.answer.questionId = id;
     console.log("answerrrr", this.answer)
     this._dataService.addAnswer(this.answer, res => {
       console.log("answer back in comp")

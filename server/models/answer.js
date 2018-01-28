@@ -5,6 +5,7 @@ var AnswerSchema = new Schema({
 	name: String,
 	content: String,
 	description: String,
+	questionId: String,
 	question: { type: Schema.Types.ObjectId, ref: "Question" },
 	likes: Number
 }, { timestamps: true, usePushEach: true })

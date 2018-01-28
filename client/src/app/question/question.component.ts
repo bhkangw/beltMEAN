@@ -22,7 +22,7 @@ export class QuestionComponent implements OnInit {
     this._dataService.questionObserver.subscribe((questions) => {
       this.questions = questions;
     })
-    
+
     this._route.paramMap.subscribe(params => {
       // this._dataService.getOneQuestion(params.get('id'));
     })
@@ -41,13 +41,13 @@ export class QuestionComponent implements OnInit {
     })
   }
 
-  getOneQuestion() {
-    var questionId = this.questionId;
-    this._dataService.getOneQuestion(questionId, res => {
-      console.log("GOT QUESTION ID back in comp")
-      // this._router.navigate(["/dashboard"]);
-    })
-  }
+  // getOneQuestion() {
+  //   var questionId = this.questionId;
+  //   this._dataService.getOneQuestion(questionId, res => {
+  //     console.log("GOT QUESTION ID back in comp")
+  //     // this._router.navigate(["/dashboard"]);
+  //   })
+  // }
 
   ngOnInit() {
     // this._dataService.getOneQuestion("5a6a434d440a176755fe0195")
@@ -61,7 +61,7 @@ export class QuestionComponent implements OnInit {
   //   this._dataService.updateQuestion(this.question);
   // }
     this.checkSess()
-    this.getOneQuestion()
+    // this.getOneQuestion()
     this._dataService.showAll()
   }
 }

@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   user: string;
   question: Question = new Question();
   questions: Array<object> = [];
-  count = this.questions.length
+  // count = this.questions.length;
 
   constructor(private _dataService: DataService, private _router: Router) {
     this._dataService.questionObserver.subscribe((questions) => {

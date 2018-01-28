@@ -30,11 +30,11 @@ module.exports = function (app) {
 		Question.showAll(req, res);
 	});
 
-	app.get("/question/:id", function (req, res) {
-		console.log("in backend routes: getting ONE question")
-		console.log(req.params.id)
-		Question.getOne(req, res);
-	});
+	// app.get("/question/:id", function (req, res) {
+	// 	console.log("in backend routes: getting ONE question")
+	// 	console.log(req.params.id)
+	// 	Question.getOne(req, res);
+	// });
 
 	app.get("*", function (req, res) {
 		res.sendFile(path.resolve("./client/dist/index.html"));

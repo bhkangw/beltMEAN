@@ -12,11 +12,14 @@ export class DataService {
 
   answers: Array<object> = [];
   answerObserver = new BehaviorSubject(this.answers)
+  questionId;
 
   oneQuestion = {};
   oneQuestionObserver = new BehaviorSubject(this.oneQuestion);
 
-  constructor(private _router: Router, private _http: Http) {
+  constructor(private _router: Router, private _http: Http, private _route: ActivatedRoute) {
+    this.questionId = _route.snapshot.params['id']
+    console.log("id!!!!", this.questionId)
   }
 
   login(user, cb){
@@ -52,24 +55,26 @@ export class DataService {
     })
   }
 
-  getOneQuestion(id, cb) {
-    console.log("HERES THE ID", id)
-    this._http.get("/question/:id").subscribe(res => {
-        console.log("getting one question", res.json());
-        this.oneQuestion = res.json();
-        this.oneQuestionObserver.next(this.oneQuestion);
-      }, err => {
-        console.log("error getting one question", err);
-      })
-  }
+  // getOneQuestion(id, cb) {
+  //   console.log("HERES THE ID", id)
+  //   this._http.get("/question/:id").subscribe(res => {
+  //       console.log("getting one question", res.json());
+  //       this.oneQuestion = res.json();
+  //       this.oneQuestionObserver.next(this.oneQuestion);
+  //     }, err => {
+  //       console.log("error getting one question", err);
+  //     })
+  // }
 
   addAnswer(answer, cb) {
+    // console.log("SERVICE ANSWER OBJECT",this.answers)
+    var id = {id:this.questionId}
     this._http.post("/addAnswer", answer).subscribe(res => {
-      this.answers = res.json();
+      // this.answers = res.json();
       this.questionObserver.next(this.answers);
       console.log("answer", answer)
       console.log("answerssssss!!!!", this.answers)
-      this._router.navigate(['dashboard']);
+      this._router.navigate(["/dashboard"]);
     })
   }
 

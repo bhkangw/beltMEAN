@@ -13,7 +13,7 @@
       </tr>
       <tr *ngFor="let q of questions">
         <td>{{ q.content }}</td>
-        <td>{{ count }}</td>
+        <td>{{ q.answers.length }}</td>
         <td><a [routerLink]="['/question', q._id]">Show</a> | <a [routerLink]="['/answer', q._id]">Answer</a></td>
       </tr>
     </table>

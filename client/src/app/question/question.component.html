@@ -1,28 +1,28 @@
 <div class="container">
-  <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/answer']">Answer the question</a>
-  <div class="jumbotron">
-    <div *ngFor="let q of questions">
-      <div *ngIf="q._id === questionId">
+  <div *ngFor="let q of questions">
+    <div *ngIf="q._id === questionId">
+  <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/answer', q._id]">Answer the question</a>
+  <!-- <div class="jumbotron"> -->
         <h1>{{q.content}} </h1>
         <h3>Description: {{q.description}}</h3>
-        <div *ngFor="let a of q.answers">
-          <p>{{ a.name }}</p>
-          <p>{{ a.content }}</p>
-          <p>{{ a.description }}</p>
-          <p>{{ a.likes }}</p>
-          <a href="">Like</a>
-        </div>
-      </div>
+      <hr>
+      <h2>Answers:</h2>
+      <table class="table table-bordered table-striped table-hover">
+        <tr>
+          <th>Posted by</th>
+          <th>Answers</th>
+          <th>Description</th>
+          <th>Likes</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let a of q.answers">
+          <td>{{ a.name }}</td>
+          <td>{{ a.content }}</td>
+          <td>{{ a.description }}</td>
+          <td>{{ a.likes }}</td>
+          <td><a href="" class="btn btn-primary">Like</a></td>
+        </tr>
+      </table>
     </div>
-  </div>
-  <div class="container">
-    <h1>Answers:</h1>
-  </div>
-  <div *ngFor="let a of question.answers">
-    <p>{{ a.name }}</p>
-          <p>{{ a.content }}</p>
-          <p>{{ a.description }}</p>
-          <p>{{ a.likes }}</p>
-    <a href="">Like</a>
   </div>
 </div>

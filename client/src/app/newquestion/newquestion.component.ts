@@ -25,7 +25,7 @@ export class NewquestionComponent implements OnInit {
     })
   }
 
-  addQuestion(quote) {
+  addQuestion(question) {
     this.question.name = this.user;
     console.log("What", this.question)
     this._dataService.addQuestion(this.question, res => {

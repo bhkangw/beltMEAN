@@ -1,20 +1,21 @@
 <div class="container">
-  <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/dashboard']">Go back to question</a>
+  <div *ngFor="let q of questions">
+    <div *ngIf="q._id === questionId">
+  <a [routerLink]="['/dashboard']">Home</a> | <a [routerLink]="['/question', q._id]">Go back to question</a>
   <div class="jumbotron">
     <h2>Question Name here!!</h2>
   </div>
-  <form (submit)="addAnswer()" #form="ngForm">
-    <label for="content">Answer</label>
-    <input type="text" name="content" required minlength="5" [(ngModel)]="answer.content" #content="ngModel" class="form-control">
-    <div *ngIf="content.invalid && (content.dirty || content.touched)">Minimum length is 5!</div>
-    <label for="description">Supporting details for your answer (optional)</label>
-    <input type="text" name="description" [(ngModel)]="answer.description" #description="ngModel" class="form-control">
-    <div *ngFor="let q of questions">
-      <div *ngIf="q._id === questionId">
-        <input type="hidden" name="questionId" value="{{q._id}}">
-      </div>
+      <form (submit)="addAnswer(q._id)" #form="ngForm">
+        <label for="content">Answer</label>
+        <input type="text" name="content" required minlength="5" [(ngModel)]="answer.content" #content="ngModel" class="form-control">
+        <div *ngIf="content.invalid && (content.dirty || content.touched)">Minimum length is 5!</div>
+        <label for="description">Supporting details for your answer (optional)</label>
+        <input type="text" name="description" [(ngModel)]="answer.description" #description="ngModel" class="form-control">
+        <input type="hidden" name="questionId" value="5a6a8205e1745f8683c81277" [(ngModel)]="answer.questionId" #questionId="ngModel">
+        {{q._id}}
+        <br>
+        <button class="btn btn-success" type="submit" [disabled]="form.invalid">Add Answer</button>
+      </form>
     </div>
-    <br>
-    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Add Answer</button>
-  </form>
+  </div>
 </div>
